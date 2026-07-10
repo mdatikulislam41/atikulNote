@@ -15,7 +15,7 @@ export default function MyHeader() {
         }}
       >
         <Text style={{ color: "#fff", fontSize: 18,textAlign:"center" }}>
-        CLASS SIX MATH
+        CLASS Nine MATH
         </Text>
       </View>
     </SafeAreaView>

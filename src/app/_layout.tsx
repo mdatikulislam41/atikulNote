@@ -1,13 +1,12 @@
 import { Directory, Paths } from "expo-file-system";
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 export default function RootLayout() {
   const scheme = useColorScheme();
-  useEffect(() => {
-    createAppFolders();
-  }, []);
+  // useEffect(() => {
+  //   createAppFolders();
+  // }, []);
   return (
      <ThemeProvider value={scheme === "dark" ? DarkTheme : DefaultTheme}>
       <StatusBar style={scheme === "dark" ? "light" : "light"} />
@@ -15,7 +14,6 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }}>
        
         <Stack.Screen name="(tabs)" /> 
-        <Stack.Screen name="download" />  
         <Stack.Screen name="pdfviewer" />  
       </Stack>
     </ThemeProvider>
