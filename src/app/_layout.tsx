@@ -1,18 +1,51 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
-
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+import { Directory, Paths } from "expo-file-system";
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from "react";
+import { useColorScheme } from "react-native";
+export default function RootLayout() {
+  const scheme = useColorScheme();
+  useEffect(() => {
+    createAppFolders();
+  }, []);
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
+     <ThemeProvider value={scheme === "dark" ? DarkTheme : DefaultTheme}>
+      <StatusBar style={scheme === "dark" ? "light" : "light"} />
+       {/* <MyHeader/> */}
+      <Stack screenOptions={{ headerShown: false }}>
+       
+        <Stack.Screen name="(tabs)" /> 
+        <Stack.Screen name="download" />  
+        <Stack.Screen name="pdfviewer" />  
+      </Stack>
     </ThemeProvider>
   );
+}
+
+
+async function createAppFolders() {
+  try {
+    // Main Folder
+    const pdfFolder = new Directory(Paths.document, "atikul");
+
+    await pdfFolder.create({
+      idempotent: true,
+    });
+    const folders = [
+      "classSix",
+      "classSeven",
+      "classEight",
+    ];
+
+    for (const name of folders) {
+      const folder = new Directory(pdfFolder, name);
+      await folder.create({ idempotent: true });
+    }
+
+    console.log("✅ PDF Folder Ready");
+    console.log(pdfFolder.uri);
+
+  } catch (error) {
+    console.error("❌ Folder Create Error:", error);
+  }
 }
