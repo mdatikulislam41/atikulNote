@@ -62,7 +62,7 @@ const loadData = async () => {
 
   return (
     
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#f8fafc" }} edges={["left", "right"]}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#b0148b" }} edges={["left", "right"]}>
       
             {/* Chapters Cards List */}
       <View>
@@ -87,7 +87,7 @@ const loadData = async () => {
                     
                       <Text style={styles.chapterNumber}>{item.chapter}</Text>
                   </View>
-                  <Text style={styles.chapterTitle}>{item.title +"and Chapter: " + item.chapter}</Text>
+                  <Text style={styles.chapterTitle}>{item.title}</Text>
                   <View style={styles.chevronContainer}>
                   <Ionicons
                     name="chevron-forward"
@@ -102,6 +102,15 @@ const loadData = async () => {
                 
               )}
             />
+      </View>
+      <View>
+        {/* <Link href={"/testing"} style={{padding:5,backgroundColor:"#817979",marginBlock:4}}> Go to Testing
+        </Link> */}
+        {/* <TouchableOpacity onPress={()=>{
+          openPdf("https://yoofymmuweehqxingnlg.supabase.co/storage/v1/object/public/atiklpdf/classSix/Chapter-4.pdf");
+        }} style={{padding:5,backgroundColor:"#817979",marginBlock:4}}>
+          <Text>TouchAble Opacity</Text>
+        </TouchableOpacity> */}
       </View>
       
       {pdfloading && (

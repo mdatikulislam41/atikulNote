@@ -1,9 +1,7 @@
-
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-export default function PdfHeader() {
+
+export default function Pdfeader() {
   return (
     <SafeAreaView
       edges={["top"]}
@@ -16,9 +14,9 @@ export default function PdfHeader() {
           paddingHorizontal: 16,
         }}
       >
-        <TouchableOpacity onPress={() => router.back()}>
-            <Ionicons name="arrow-back" size={24} color="#fff" />
-        </TouchableOpacity>
+        <Text style={{ color: "#fff", fontSize: 18,textAlign:"center" }}>
+        CLASS Nine MATH
+        </Text>
       </View>
     </SafeAreaView>
   );

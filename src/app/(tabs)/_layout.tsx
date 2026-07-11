@@ -38,7 +38,7 @@ export default function TabLayout() {
           backgroundColor: isDark ? "#f39509" : "#ef1111",
           borderTopColor: isDark ? "#d51a8d" : "#000000",
           position: "absolute",
-          bottom: 50,
+          bottom: 60,
           height: 60,
           borderRadius: 10,
           marginHorizontal: 20,

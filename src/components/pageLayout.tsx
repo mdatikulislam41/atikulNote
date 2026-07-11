@@ -1,5 +1,6 @@
 import MyHeader from "@/components/myheader";
-import PdfHeader from "@/components/pdfheader";
+
+// import Pdfeader from "@/components/pdfheader";
 import { usePathname } from "expo-router";
 
 type PageLayoutProps = {
@@ -9,12 +10,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
   const pathname= usePathname();
   return (
     <>
-      {pathname.startsWith("/pdfviewer") ? (
-        <PdfHeader />
-      ) : (
-        <MyHeader />
-      )}
-
+      <MyHeader />
       {children}
     </>
   );
