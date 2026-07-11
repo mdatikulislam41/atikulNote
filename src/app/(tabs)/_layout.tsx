@@ -1,6 +1,7 @@
 
 
 import PageLayout from '@/components/pageLayout';
+import { myColors } from '@/constants/mycolors';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from "expo-router";
 import { View, useColorScheme } from "react-native";
@@ -17,10 +18,10 @@ export default function TabLayout() {
         borderRadius: 20,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: focused ? "#ffffff33" : "transparent",
+        backgroundColor: focused ? myColors.iconActive : "transparent",
       }}
     >
-      <Ionicons name={name as any} size={size} color={focused ? "#ffffff" : color} />
+      <Ionicons name={name as any} size={size} color={focused ? "#ffffff" : "#000"} />
     </View>
   );
 
@@ -35,8 +36,8 @@ export default function TabLayout() {
         tabBarActiveTintColor: "#ffffff",
         tabBarInactiveTintColor: "#f0f0f3",
         tabBarStyle: {
-          backgroundColor: isDark ? "#f39509" : "#ef1111",
-          borderTopColor: isDark ? "#d51a8d" : "#000000",
+          backgroundColor: isDark ? "#f39509" : myColors.white,
+          borderTopColor: isDark ? "#d51a8d" : myColors.white,
           position: "absolute",
           bottom: 60,
           height: 60,
@@ -75,7 +76,7 @@ export default function TabLayout() {
         name="bookmark"
         options={{
           title: "Bookmark",
-          tabBarIcon: ({ color, size, focused }) => renderTabIcon("bookmark", focused, color, size),
+          tabBarIcon: ({ color, size, focused }) => renderTabIcon("bookmark-outline", focused, color, size),
         }}
       />
      
@@ -83,7 +84,7 @@ export default function TabLayout() {
         name="history"
         options={{
           title: "History",
-          tabBarIcon: ({ color, size, focused }) => renderTabIcon("time", focused, color, size),
+          tabBarIcon: ({ color, size, focused }) => renderTabIcon("time-outline", focused, color, size),
         }}
       />
       

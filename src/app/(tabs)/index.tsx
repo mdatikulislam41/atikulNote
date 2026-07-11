@@ -1,10 +1,11 @@
+import { myColors } from "@/constants/mycolors";
 import { supabase } from "@/lib/supabase";
 import { downloadPdf } from "@/services/download";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 type Chapter = {
   id: number;
   class: number;
@@ -59,16 +60,18 @@ const loadData = async () => {
       pdfsetLoading(false);
     }
   }
+const insets = useSafeAreaInsets();
 
   return (
     
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#b0148b" }} edges={["left", "right"]}>
+    <SafeAreaView style={{ flex: 1,paddingBottom: 25 + insets.bottom,backgroundColor:myColors.white }} edges={["left", "right","bottom"]}>
       
             {/* Chapters Cards List */}
       <View>
                 <FlatList
               data={chapters}
-              style={{width:"100%",paddingBlock:40,paddingInline:20}}
+              style={{width:"100%",paddingBlockStart:10,paddingInline:20,}}
+              showsVerticalScrollIndicator={false}
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
                <View>
@@ -182,8 +185,8 @@ const styles = StyleSheet.create({
   chapterTitle: {
     flex: 1,
     marginLeft: 16,
-    fontSize: 15,
-    fontWeight: "600",
+    fontSize: 18,
+    fontWeight: "500",
     color: "#1e293b",
     lineHeight: 22,
   },
